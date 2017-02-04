@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>the result page</title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="heatmap" style="width: 1024px; height: 1024px; opacity: 1;"></div>
+		<script src="js/heatmap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		// now generate some random data
+		var points = [];
+		var len = 0;
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', '/hotmapdata');
+		xhr.responseType = 'json';
+		
+		xhr.onload = function() {
+			len = xhr.response.length;
+			points = Array.prototype.map.call(xhr.response, function (e) {
+				return {
+					x: e.mousex,
+					y: e.mousey,
+					value: 1
+				}
+			})
+			
+			var heatmapInstance = h337.create({
+			  // only container is required, the rest will be defaults
+			  container: document.querySelector('.heatmap'),
+			  maxOpacity: .5,
+			  minOpacity: 0,
+			  blur: 0.9
+			});
+		
+			// if you have a set of datapoints always use setData instead of addData
+			// for data initialization
+			heatmapInstance.setData({data: points});
+		};
+		
+		xhr.onerror = function() {
+		  console.log("error");
+		};
+		
+		xhr.send();
+		</script>
+	</body>
+</html>

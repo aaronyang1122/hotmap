@@ -1,0 +1,26 @@
+{
+  "name": "hotmap",
+  "version": "1.0.0",
+  "description": "hotmap server temp",
+  "main": "",
+  "dependencies": {
+    "express": "^4.14.1",
+    "heatmap.js": "^2.0.5",
+    "phantom": "^4.0.0",
+    "ua-device": "^0.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronyang1122/hotmap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronyang1122/hotmap/issues"
+  },
+  "homepage": "https://github.com/aaronyang1122/hotmap#readme"
+}
